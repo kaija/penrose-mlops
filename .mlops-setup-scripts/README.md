@@ -34,7 +34,7 @@ To use the scripts, you must:
   If you lack sufficient permissions, you'll see an error message describing any missing permissions when you
   run the setup scripts below. If that occurs, contact your GCP account admin to request any missing permissions.
 
-
+* Run `gcloud auth application-default login` to configure the GCP CLI credential
 
 ### Configure Databricks auth
 * Configure a Databricks CLI profile for your staging workspace by running
