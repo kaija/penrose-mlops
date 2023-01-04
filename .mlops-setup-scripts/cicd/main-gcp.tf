@@ -1,3 +1,14 @@
+module "mlops_gcp_infrastructure" {
+  source = "databricks/mlops-aws-infrastructure/databricks"
+  providers = {
+    databricks.staging = databricks.staging
+    databricks.prod    = databricks.prod
+  }
+  staging_workspace_id          = "123456789"
+  prod_workspace_id             = "987654321"
+  additional_token_usage_groups = ["users"]     # This field is optional.
+}
+
 module "gcp_create_sp" {
   source = "databricks/mlops-aws-project/databricks"
   providers = {
@@ -15,7 +26,7 @@ data "databricks_current_user" "staging_user" {
 
 provider "databricks" {
   alias = "staging_sp"
-  host  = "https://your-staging-workspace.gcp.databricks.com"
+  host  = "https://6837671528024691.1.gcp.databricks.com"
   token = module.gcp_create_sp.staging_service_principal_token
 }
 

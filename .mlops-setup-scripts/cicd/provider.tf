@@ -11,7 +11,7 @@ terraform {
   // provisioned by the Terraform config under .mlops-setup-scripts/terraform
   backend "gcs" {
     bucket         = "penrose-cicd-setup-tfstate"
-    key            = "cicd-setup.terraform.tfstate"
+    prefix         = "cicd-setup.terraform"
   }
 }
 

@@ -3,7 +3,7 @@
 // in https://registry.terraform.io/providers/hashicorp/aws/latest/docs#environment-variables
 
 variable "gcp_project_id" {
-  type    = string
+  type = string
 }
 
 provider "google" {
@@ -11,10 +11,19 @@ provider "google" {
 }
 
 resource "google_storage_bucket" "terraform_state" {
-  name     = "penrose-tfstate"
-  location = "US"
+  name                        = "penrose-tfstate"
+  location                    = "US"
+  uniform_bucket_level_access = true
   lifecycle {
     prevent_destroy = true
   }
 }
 
+resource "google_storage_bucket" "cicd_terraform_state" {
+  name                        = "penrose-cicd-setup-tfstate"
+  location                    = "US"
+  uniform_bucket_level_access = true
+  lifecycle {
+    prevent_destroy = true
+  }
+}
